@@ -1,14 +1,14 @@
 [Unit]
 Description=Kibana 6
-BindsTo=probemanager.service
-Wants=elasticsearch.service
-After=elasticsearch.service
-Wants=cassandra.service
-After=cassandra.service
-Wants=probemanager.service
-Before=probemanager.service
-Wants=probetransmogrifier.service
-Before=probetransmogrifier.service
+#BindsTo=probemanager.service
+#Wants=elasticsearch.service
+#After=elasticsearch.service
+#Wants=cassandra.service
+#After=cassandra.service
+#Wants=probemanager.service
+#Before=probemanager.service
+#Wants=probetransmogrifier.service
+#Before=probetransmogrifier.service
 
 [Service]
 Type=simple
@@ -28,10 +28,10 @@ Environment=NODE_ENV=production
 
 WorkingDirectory=/usr/local/kibana-6.6.0-linux-x86_64/
 
-ExecStart=~/kibana-6.6.0-linux-x86_64/bin/kibana
+ExecStart=/usr/local/kibana-6.6.0-linux-x86_64/bin/kibana
 
-ExecStartPost=/usr/bin/python /usr/local/kibana-6.6.0-linux-x86_64/scripts/setDefaultIndex.py
-ExecStartPost=/usr/bin/python /usr/local/kibana-6.6.0-linux-x86_64/scripts/loadAssets.py
+#ExecStartPost=/usr/bin/python /usr/local/kibana-6.6.0-linux-x86_64/scripts/setDefaultIndex.py
+#ExecStartPost=/usr/bin/python /usr/local/kibana-6.6.0-linux-x86_64/scripts/loadAssets.py
 
 TimeoutStopSec=30
 
