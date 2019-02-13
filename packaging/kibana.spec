@@ -26,19 +26,14 @@ fi
 
 #sed command to change kibana port number
 sed 's/5602/5601/' config/kibana.yml > tmp.out && mv tmp.out config/kibana.yml
-#ensure nvm is installed - not sure if node commands are necessary
-#NVM_DIR="%_builddir/%{name}/nvm" bash scripts/kibanaSpecHelper_install_nvm.sh
-#source %_builddir/%{name}/nvm/nvm.sh
-#install the correct node version locally
-#nvm install "$(cat .node-version)"
-#install all of the dependencies
+#install yarn
 curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo
 sudo rpm --import https://dl.yarnpkg.com/rpm/pubkey.gpg
 sudo yum install yarn
 yarn --version
 
 %build
-#run the build
+#installs dependencies and runs the build
 cd %{name}
 yarn kbn bootstrap
 
